@@ -60,21 +60,6 @@ public class RumenzA {
 package com.rumenz;
 
 
-import org.springframework.beans.MutablePropertyValues;
-import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
-import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.beans.factory.support.GenericBeanDefinition;
-import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
-
 @Import(DemoApplication.Config.class)
 public class DemoApplication {
     public static  void main(String[] args) {
@@ -108,14 +93,6 @@ public class DemoApplication {
 ```java
 package com.rumenz;
 
-import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 @Import(DemoApplication.Config.class) //1.注解方式
 public class DemoApplication {
@@ -157,5 +134,16 @@ public class DemoApplication {
     }
 
 }
+
+```
+
+## AnnotatedBeanDefinitionReader#register
+
+- register -->>this.reader.register
+- this.reader -->>private final AnnotatedBeanDefinitionReader reader;
+
+```java
+AnnotationConfigApplicationContext ac=new AnnotationConfigApplicationContext();
+ac.register(DemoApplication.class);
 
 ```
